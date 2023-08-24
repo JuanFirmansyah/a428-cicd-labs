@@ -1,6 +1,6 @@
 node {
-    // Menggunakan docker image 'node:16-buster-slim'
-    docker.image('node:16-buster-slim').inside('-p 3000:3000') {
+    // Menggunakan docker image 'node:14-buster-slim'
+    docker.image('node:14-buster-slim').inside('-p 3000:3000') {
         // Stage Checkout
         stage('Checkout') {
             checkout scm
