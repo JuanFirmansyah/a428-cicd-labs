@@ -9,14 +9,19 @@ pipeline {
         HOME = '/tmp'
     }
     stages {
+        stage('Clean Workspace') {
+            steps {
+                sh 'rm -rf node_modules package-lock.json'
+            }
+        }
         stage('Build') {
             steps {
                 sh 'npm install'
             }
         }
-        stage('Test') { 
+        stage('Test') {
             steps {
-                sh './jenkins/scripts/test.sh' 
+                sh './jenkins/scripts/test.sh'
             }
         }
     }
