@@ -41,4 +41,11 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            script {
+                currentBuild.result = 'SUCCESS'  // Set the build result to SUCCESS after pause
+            }
+        }
+    }
 }
