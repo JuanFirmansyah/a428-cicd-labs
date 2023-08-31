@@ -31,14 +31,5 @@ pipeline {
                 sh './jenkins/scripts/kill.sh'
             }
         }
-        stage('Pause') {
-            steps {
-                script {
-                    currentBuild.result = 'SUCCESS'  // Set the build result to SUCCESS before pause
-                    echo "Pausing for 1 minute..."
-                    sleep(time: 1, unit: 'MINUTES')  // Pause the pipeline for 1 minute
-                }
-            }
-        }
     }
 }

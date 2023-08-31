@@ -24,6 +24,21 @@ pipeline {
                 sh './jenkins/scripts/test.sh'
             }
         }
+        stage('Manual Approval') {
+            steps {
+                script {
+                    def userInput = input(
+                        id: 'userInput',
+                        message: 'Do you want to proceed to Deploy?',
+                        parameters: [choice(name: 'ACTION', choices: 'Proceed\nAbort', description: 'Select an action')]
+                    )
+
+                    if (userInput == 'Abort') {
+                        error('Pipeline aborted by user.')
+                    }
+                }
+            }
+        }
         stage('Deploy') {
             steps {
                 sh './jenkins/scripts/deliver.sh'
