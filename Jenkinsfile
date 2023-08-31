@@ -30,8 +30,11 @@ pipeline {
                 input message: 'Sudah selesai menggunakan React App? (Klik "Proceed" untuk mengakhiri)'
                 sh './jenkins/scripts/kill.sh'
 
-                // Menambahkan perintah sleep selama 30 detik sebelum melanjutkan
-                sh 'sleep 30'
+                // Menambahkan perintah sleep selama 5 detik sebelum melanjutkan
+                sh 'sleep 5'
+
+                // Menjalankan aplikasi React setelah deploy
+                sh 'npm start'
             }
         }
     }
